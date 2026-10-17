@@ -36,9 +36,9 @@ def get_user():
     cursor = conn.cursor()
 
     # Intentionally vulnerable SQL query for CodeQL lab
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
+    query = "SELECT * FROM users WHERE username = ?"
 
-    cursor.execute(query)
+    cursor.execute(query, (username,))
     result = cursor.fetchall()
 
     conn.close()
